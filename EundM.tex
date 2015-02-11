@@ -1,0 +1,299 @@
+% Technische Formelsammlung by Emu
+
+% Dokumenteinstellungen
+\documentclass[10pt,a4paper]{scrartcl}
+\usepackage[a4paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{esint}
+\usepackage{color}
+
+
+% Dokumentbeschreibung
+\title{Zusammenfassung EI SoSe 2011}
+\author{Emanuel Regnath}
+
+
+% Dokumentbeginn
+\begin{document}
+
+% Titel
+\maketitle
+
+
+
+
+
+\newpage
+
+% -------------------------------------------
+% | 		Elektrismus und Magnizität		|
+% ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+% =============================================================================================================================
+\section{Elektrismus und Magnizität}
+Hauptsatz der Elektrostatik: Elektrische Felder sind konservativ!
+
+\subsection{Elektrische Ladung}
+$Q=\pm N_e\cdot e^{-} \qquad [Q]=1C(oulomb)=1As$\\
+Ungleichenamige Ladungen ziehen sich an, gleichnamige stoßen sich ab(Coulomb-Kraft).\\
+Ladungen erzeugen Elektrische Felder/Verschiebungsfelder!\\
+Ladungen$\rightarrow$ C-Kräfte $\rightarrow$ D-Feld/E-Feld $\rightarrow$ Potential/Spannung
+
+
+
+
+\subsection{Elektrisches Verschiebungsfeld}
+%-----------------------------------------------------------------------
+
+\subsubsection{Gaußsches Gesetz} %Gut
+% ----------------------------------------------------------------------
+Beschreibt den Elektrischen Fluss durch ein Kontrollvolumen $V$ mit Hüllfläche $\partial V$
+\begin{center} \boxed{ \quad
+	\oiint\limits_{\partial V} \vec D \cdot \mathrm d\vec a \equiv Q(V)
+\quad } \end{center}
+Raumladungsdichte($\rho=\frac{Q(V)}{V}$):  $Q(V)=\iiint_{V} \mathrm{div} \, \vec D \, \mathrm d^3r = \iiint_{V} \rho(\vec r) \, \mathrm d^3r$ \quad $\Rightarrow$ \quad $\mathrm{div} \, \vec D(\vec r)=\rho(\vec r)$\\
+Oberflächenladungsdichte($\sigma=\frac{Q(A)}{A}$):  $Q(A)=\iint_{A} \sigma(\vec r) \, \mathrm da$
+
+
+\begin{equation*}
+	\mathrm{div}(\varepsilon \cdot \mathrm{grad}(\Phi)) = -\rho
+\end{equation*}\\
+Poisson-Gleichung: \boxed{\Delta \Phi(\vec r) = -\frac{\rho(\vec r)}{\varepsilon}} \qquad $\Delta$ :Laplace-Operator
+
+\subsection{Coulomb Potential}
+% ----------------------------------------------------------------------
+Elektrisches Potential am Punkt $P=O+\vec r$ im Bezug auf $P_0=O+\vec r_0$:\\
+\boxed{ \Phi(\vec r) = \Phi(\vec r_0) - \int\limits_{P_0}^P \vec E \mathrm d\vec r}\qquad $\Phi(\vec r_0)$: Bezugspotential(meist $\Phi(\vec r_0) = 0$, und $r_0=\infty$)\\
+\\
+Für diskrete Punktladungen am Ort $\vec r_i$ gilt:
+\begin{equation*}
+	\Phi(\vec r)=-\int \vec E \cdot \mathrm d \vec r=\frac{1}{4\pi\varepsilon} \sum_{i=1}^N \frac{q_i}{|\vec r - \vec r_i|}
+\end{equation*}
+\\
+Falls eine kontinuierliche Raumladungsverteilung $\rho(\vec r)$ gegeben ist, gilt:
+\begin{equation*}
+	\Phi(\vec r)=\frac{1}{4\pi\varepsilon} \int_{E_3} \frac{\rho(\vec r)}{|\vec r - \vec r'|} \mathrm d^3 r'
+\end{equation*}
+
+\subsubsection {Spannnung} %Gut
+Die Differenz zwischen zwei elektrischen Potentialen an den Punnkten $P_1$,$P_2$ nennt man Spannung:\\
+\boxed{ U_{12}=\Phi(P_1)-\Phi(P_2) = \int_{P_1}^{P_2} \vec E \cdot \mathrm d\vec r = \underset{\Phi(P_1)-\Phi(P_0)}{\int_{P_1}^{P_0} \vec E \cdot \mathrm d\vec r} + \underset{-\Phi(P_2) +\Phi(P_0)}{\int_{P_0}^{P_2} \vec E \cdot \mathrm d\vec r} = \frac{W_{12}}{q}}
+
+
+\subsection{Elektrische Feld}
+% ----------------------------------------------------------------------
+Elektrische Felder werden von Ladungen erzeugt.\\
+\fbox{\parbox{10cm}{
+\begin{equation}
+	\vec E(\vec r) := \frac{\vec F_q(\vec r)}{q} = -\mathrm{grad}(\Phi)=- \nabla \Phi=\frac{1}{4\pi \varepsilon} \cdot \sum_{i=1}^N \frac{\vec r - \vec r_i'}{|\vec r - \vec r_i'|^3}q_i
+\end{equation}}}
+
+
+Regeln:
+\begin{enumerate}\itemsep0pt
+	\item Innerhalb eines idealen Leiters ist das E-Feld Null(Influenz).
+	\item Die Feldlinien stehen immer senkrecht auf eine Leiteroberfläche.
+	\item Die Feldlinien laufen von positiven zu negativen Ladungen.
+	\item Bei Kugelladungen sinkt das E-Feld radial mit $\frac{1}{r^2}$
+	\item Bei unendlicher Linienladung sinkt das E-Feld radial mit $\frac{1}{r}$
+	\item Bei unendlicher Flächenladung bleibt das E-Feld konstant.
+\end{enumerate}
+
+\subsubsection{Influenz}
+Frei bewegliche Ladungsträger(Elektronen) ordnen sich innerhalb einer ideal leitenden Umgebung so an, dass sie einem äußeren E-Feld entgegenwirken.
+
+
+\subsection{Elektrische Kapazität}
+Die Kapazität zwischen zwei Leitern $L1$ mit Hüllefläche $H1$ und einem Leiter $L2$:\\ 
+\boxed{C=\frac{Q}{U_{12}}}\quad  $=\frac{\int_H1 \varepsilon \vec E \mathrm{d}\vec a}{\int_{L1}^{L2} \vec E \mathrm{d}\vec r}$\\
+\\
+Im Plattenkondensator mit homogenen $\varepsilon$ und $A>>d$ gilt:\\
+$C=\frac{Q}{U}=\frac{E\cdot d}{A\epsilon E}=\varepsilon \frac{A}{d}$\\
+Außerhalb des Kondensators ist $\vec E=0$, da sich die Felder der beiden Platten auslöschen.\\
+Kugelkondensator($a$ Innenradius): $C=\frac{Q}{U_{ab}}=4\pi\varepsilon\frac{ab}{a-b}$\\
+
+
+
+
+\subsection{Stationäre Ströme}
+%-----------------------------------------------------------------------
+Stromstärke $I(A)$ durch eine Fläche $A$ mit Stromdichte $\vec j$:
+\begin{equation}
+	\boxed{\, I(A)=\iint_A \vec j \cdot \mathrm d\vec a \,} \qquad \vec j = \sum_{\alpha = 1}^K q_\alpha n_\alpha \vec v_\alpha=\underbrace{\sum_{\alpha = 1}^K |q_\alpha | n_\alpha \mu_\alpha }_\sigma  \vec E 
+\end{equation}
+Für $K$ verschiedene Ladungsträgersorten mit spez. Ladung $q_\alpha$, Trägerdichte $n_\alpha$ und Dirftgeschwindigkeit $\vec v_\alpha$\\
+
+Für eine Trägersorte: $\vec j = q n \vec v=\rho \vec v$\\
+\\
+Ladungsträgertransport:\\
+$m\cdot \frac{\mathrm d \vec v(t)}{\mathrm d t}=\vec F_{el}=q\cdot \vec E$\\
+$\underbrace{\frac 12 m \left(v(t_2)^2-v(t_2)^2\right)}_{\Delta E_{kin}}=\underbrace{q\cdot U_{12}}_{-\Delta E_{el}}$\\
+\\
+Mit Stoßprozessen(Drudes Driftmodell):\\
+$q\cdot \vec E=m^* \frac{ \vec v}{\tau}$\qquad $\tau$ Mittlere Stoßzeit, $m^*$ effektive Masse, $\vec v$ Driftgeschw.\\
+$\vec v(\vec E)=\frac{q\cdot \tau}{m^{*}}\cdot \vec E=sgn(q)\mu\cdot \vec E$\\
+$\Rightarrow \vec j = |q| n \mu \vec E=\underbrace{\sum_\alpha ^K |q_\alpha| n_\alpha \mu_\alpha}_{\sigma} \vec E$ (lokales ohmsches Gesetz)\\
+$\sigma > 0 \ \Rightarrow$ el. Strom fließt in Richtung abnehmender Potentialwerte!\\
+$I=\underbrace{\sigma \frac{A}{l}}_{=G} U$\qquad $\Rightarrow$ \qquad $I=GU \quad U=RI$\quad ohmsches Gesetz in integraler Form\\
+$\sigma$ Leitfähigkeit, $n$ Trägerdichte\\
+\\
+Ladungsbilanz:\\
+$\int_{\partial V} \vec j \mathrm d \vec a = \underbrace{- \frac{\mathrm d Q(V)}{\mathrm d t}}_{Stromabfluss}$ \quad stationärer Strom: $\frac{\mathrm d Q(V)}{\mathrm d t}=0$\\
+Kirchoff Knotenregel: $\sum_{k=1}^N \int_{A_k}\vec j \mathrm d \vec a = \sum_{k=1}^N I_k = 0$\\
+Ladungsbilanzgleichung: $\mathrm{div} \vec j + \frac{\partial\rho }{\partial t} = 0$\\	
+homogene Poissongleichung: $\mathrm{div}(\sigma \nabla \Phi) = 0$\\
+
+\subsection{Elektrische Arbeit und Leistung} %Gut 
+Elektrische Feldenergiedichte:\\
+\boxed{w_{el}=\frac{1}{2}\vec E \vec D}\\
+Bei einer Punktladung gilt:\\
+Arbeit: $\mathrm dW_{el}=\vec F_{el} \, \mathrm d \vec r = q \vec E \, \mathrm d \vec r=Q\cdot U$\\
+\\
+Kondensator: \boxed{ W_{el} = \frac{1}{2} \frac{Q^2}{C} = \frac{1}{2} QU = \frac{1}{2} CU^2}\\
+\\
+Leistung: $P_{el}=\frac{\mathrm dW_{el}}{\mathrm d t}=q\vec E \frac{\mathrm d \vec r}{\mathrm d t}=q \vec E \vec v$\\
+Leistungsdichte: $p_{el}=\frac{N}{V} P_{el}= nq\vec v \vec E=\vec j \cdot \vec E$\\
+\\
+Bei ohmschen Widerstand($\vec j = \sigma \vec E$):\\
+$p_{el}=\sigma |\vec E|^2=\frac{1}{\sigma}|\vec j|^2\ge 0$\\
+$P_{el}=p_{el}\cdot V=|\vec j|A|\vec E|l=U\cdot I=R\cdot I^2$\\
+\\
+Für ein Strömungsfeld mit $K$ Trägersorten $\vec j = \sum_{\alpha = 1}^K q_\alpha n_\alpha \vec v_\alpha$ \\
+
+
+\subsubsection{Energieübertragung}
+$P_V$: Leistung des Verbrauchers, $P_G$: Leistung des Generators, $R_L$: Leistungswiderstand.\\
+$\eta = \frac{P_v}{P_G}=\frac{U_V}{U_G}=1-\frac{R_L P_G}{U_G^2}$\quad $\Rightarrow$ \quad $U_G$ sehr groß! \\
+
+\subsection{Magnetostatik}
+Mgnetische Flussdichte: $\vec B(\vec r, t)$\qquad $\dim (\vec B)=1\frac{Vs}{m^2}=1T$\\
+Bei Zeichnungen: $\odot$: Vektor aus Zeichenebene, $\otimes$ Vektor in Zeichenebene.
+\\
+Es gibt keine magnetischen Monopole, B-Feldlinien sind stets geschlossen!\\
+$\int_{\partial V} \vec B \, \mathrm d\vec a= 0$ \qquad (immer gültig)\\
+\framebox{$\mathrm{div} \vec B = 0$}\\
+Magnetfelder werden von bewegten Ladungen erzeugt.\\
+$\int_{\partial A} \vec B \cdot \mathrm d\vec r = \mu_0 I(A)= \mu_0 \cdot \int_{A} \vec j \cdot \mathrm d\vec a$
+
+
+\subsubsection{Lorentzkraft} %Gut
+Auf eine im Magnetfeld $\vec B$ bewegte Ladung $q$ wirtk eine Kraft $\vec F_L$\\
+Kraft auf Ladungsträger $\alpha$: \framebox{$\vec F_{L,\alpha}=q_\alpha (\vec v_\alpha \times \vec B)$}\\
+Kraftdichte: \boxed{\vec f_L=\vec j \times \vec B}\\
+\\
+Kraft auf Leiter: $\vec F_{Leiter}=\int_V \vec f_L \mathrm dV=\iiint_{Leiter} \vec j(\vec r)\times \vec B(\vec r)\, \mathrm d^3r$\\
+Kraft auf Linienförmigen Leiter mit konstanter Querschnittsfläche: \\
+$\vec F_{Leiter}=l\cdot A (\vec j\times \vec B)=-I\int_C \vec B(\vec s) \times \mathrm d \vec s=\int_C \mathrm d \vec F_L$\qquad \boxed{\mathrm d \vec F_L=I\cdot\mathrm d \vec s \times \vec B}\\
+Kraft auf geschlossene Leiterschleife verschwindet!  $\vec F_{Leiter}=0$\\
+Drehmoment auf Leiterschleife: $\vec F_{Leiter}=\int_C \mathrm d \vec F_L=\sum_{i=1}^N \int_{Ci} \mathrm d \vec F_{Li}$\\
+Drehmoment auf beliebig geformte ebene Leiterschleife mit Fläche $A$: \boxed{\vec M=I\vec A \times \vec B=\vec m \times \vec B}\\
+
+
+\subsubsection{Permanentmagnet}
+Material in dem sehr viele ($~10^{22}\cdot 10^{23} cm^{-3}$) atomare Ringströme von gleichorientierten magnetischen Moment $\vec m_0$ Domänen bilden.\\
+Magnetisierung: $\frac{magn. Moment}{Volumen}=\vec{\mathcal M} =n \cdot {\overline{\vec m_0}}$\\
+Drehmoment auf Permanentmagnet mit Volumen $V$: $\vec M = V\cdot (\vec {\mathcal{M}} \times \vec B)=\vec m \times \vec B$\\
+Makroskopische Ringströme und Permanentmagneten zeigen gleiches Verhalten!\\
+ 
+\subsubsection{Elektromagnetische Kraft}
+$\vec E$ und $\vec B$ wirken gleichzeitig: Superposition.\\
+Kraft auf Punktladung: $\vec F_{em}=q(\vec E + \vec v\times \vec B)$\\
+Kraftdichte: $\vec f_{em}=\rho \vec E + \vec j \times \vec B$\qquad $\rho=\sum_{\alpha=1}^K n_\alpha q_\alpha$\\
+
+$P_{mag}=\frac{\mathrm dW_{mag}}{\mathrm dt}=0$\qquad Magnetfeld leistet keine Arbeit. $E_{kin}=const.$\\
+\\
+Ladungsbewegung im homogenen Magnetfeld(Kreisbahn):\\
+Lräftegleichgewicht: $\vec F_L=\vec F_Z \quad \Rightarrow \quad \frac{mv_{\perp}^2}{r}=|q\vec v \times \vec B|=qv_{\perp}B$\\
+$\frac{mv_{\perp}}{r}=qB\qquad v_{\perp} =r\Omega$\\
+$m\Omega=qB$\qquad $T=\frac{2\pi}{\Omega}$\\
+\\
+Mit $v_{||}$: Helix(Schraube) mit Radius $r=\frac{v_\perp}{\Omega}=\frac{v_\perp m}{q B}$
+
+\subsubsection{Hall-Effekt} %Nochmal überprüfen
+In einem Stromdurchflossenen Leiter der Länge $x$, Breite $z$ und Höhe $y$ werden Ladungen durch ein magnetisches Querfeld $\vec B_z$ zum Rand des Leiters abgelenkt. Dadurch entsteht eine Querspannung $U_H$.
+Kräftegleichgewicht: $F_{el}=F_L$ \quad $\Rightarrow$ \quad $|q| v_x B_z = q E_y$\\
+$v_x=\frac{U_H}{y B_z}$\\
+$j_x=\frac{I_x}{y\cdot z}=qn\cdot v_x=\rho v_x$\\
+
+
+
+
+
+\subsection{Magnetostatische Felder}
+%-----------------------------------------------------------------------
+Amperesches Durchflutungsgesetz:\\
+\begin{center} \boxed{ \quad 
+	\oint\limits_{\partial A} \vec H \cdot \mathrm d\vec r=I(A)=\int\limits_{A} \vec j \mathrm d\vec a
+\quad }\end{center}
+$\int_{\partial A} \vec B \mathrm d\vec r=\mu I(A)=\mu \int_{A} \vec j \mathrm d\vec a$\qquad $\mu=\mu_0\mu_r$\\
+\\
+Kraft auf $\begin{Bmatrix} ruhende \\ bewegte \end{Bmatrix}$ Testladung $\overset{el. Kraft}{\underset  {Lorentzraft}{\Longrightarrow}}$ $\begin{Bmatrix} \vec E \\ \vec B \end{Bmatrix}$ \\
+Erzeugt durch $\begin{Bmatrix} Ladungsverteilung\ \varrho \\ Stromdichte\ \vec j \end{Bmatrix}$ $\overset{Gauß}{\underset {Ampere}{\Longrightarrow}}$ $\begin{Bmatrix} \vec D \\ \vec H \end{Bmatrix}$ \\
+\\
+Magnetfeld eines unendlich langen Drahtes:\\
+$\vec H(\vec r)=H_\varphi \vec e_\varphi=\frac{I}{2\pi r} \vec e_\varphi$\\
+\\
+Kraft zwischen zwei unendlich langen parallelen Drähten mit Abstand $d$:
+$\frac{\mathrm dF_{12}}{\mathrm dz}=-\mu \frac{I_1 I_2}{2\pi d} \vec e_{12}$\\
+\\
+$H_\varphi(\vec r)=\frac{1}{r}\int_0^r \vec j(r')r' \mathrm dr'$
+
+\subsection{Maxwellsches Durchflutungsgesetz}
+Integrale Form: \boxed{\int_{\partial A} \vec H \mathrm d\vec r= \int_{A} \left( \vec j + \frac{\partial \vec D}{\partial t} \right) \cdot \mathrm d \vec a}\\
+Differentielle Form: \boxed{\mathrm{rot} \vec H = \vec j + \frac{\partial \vec D}{\partial t}}\\
+Anmerkung: $\frac{\partial \vec D}{\partial t}$ nennt man Verschiebungsstrom.
+
+\subsection{Induktion}
+Auf bewegte Ladung im Magnetfeld wirkt eine Kraft. Diese Kraft erzeugt ein $E$-Feld, welches eine Spannung induziert.\\
+\boxed{\vec E_{ind,B} = \frac{\vec F_L}{q} = \vec v \times \vec B}
+\\
+Magnetischer Fluss \boxed{\Phi(A) = \int_{A(t)} \vec B \cdot \mathrm d\vec a }\\
+$U_{ind,b}=\int_{\partial A(t)} E_{ind,B} \mathrm d\vec r = - \frac{\mathrm d\Phi(A)}{\mathrm dt}$\\
+$U_{ind,r}=\int_{\partial A} E_{ind,r} \mathrm d\vec r = - \int_A \frac{\partial \vec B}{\partial t} \cdot \mathrm d\vec a$\\
+
+Bemerkung: Spannungspfeil entgegen der Stromrichtung im Leiter!\\
+\\
+\boxed{U_{ind} = -\frac{\mathrm d}{\mathrm dt} \iint\limits_{A(t)} \vec B \mathrm d\vec a = - \frac{\mathrm d\Phi(A)}{\mathrm dt} = \underset{\text{Bewegungsinduktion}}{\oint\limits_{\partial A} (\vec v \times \vec B) \mathrm d\vec r} \quad - \quad  \underset{\text{Ruheinduktion}}{\iint\limits_{A(t)} \frac{\partial B}{\partial t} \mathrm d\vec a}}\\
+Bei homogenen B-Feld und senkrecht zur Fläche: $U_{ind}=- \dot \Phi = \dot A B + A \dot B$\\
+
+
+
+
+
+\subsection{Vergleiche}
+% ----------------------------------------------------------------------
+
+%Tabelle anpassen:
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.8}
+
+\everymath{\displaystyle} % Formeln ab hier groß Schreiben
+Für Punktförmige Ladung/Masse gilt:\\
+\begin{tabular}{l|l|l}
+	Physikalische Größe & Elektrostatik & Gravitation \\ \hline
+	Masse & $q$ & $m$ \\
+	Kraft & $\vec F_E=\frac{1}{4\pi \varepsilon} \cdot \frac{|q_1 q_2|}{r^2}\vec e_r$ & $\vec F_G = -G \cdot \frac{m_1 m_2}{r^2}\vec e_r$ \\
+	Feld & $\vec E:=\frac{\vec F_E}{q}$ & $\vec g:= \frac{\vec F_G}{m}$ \\
+	Potential & $\Phi _E=\vec E \cdot \vec r$ & $\Phi_G=\vec g \cdot \vec r$\\
+\end{tabular}
+$r: Abstand$\\
+\\
+\newline
+\newline
+\begin{tabular}{l|l|l}
+	 & D-Feld & H-Feld \\ \hline
+	Durchflutung & $\oiint_{\partial V} \vec D \cdot \mathrm d\vec a \equiv Q(V)$ & $\oint_{\partial A} \vec H \cdot \mathrm d\vec r=I(A)$ \\
+	Vereinfachung: & $4\pi r^2 D(r)=Q(V)$ & $2\pi r H(r)=I(A)$ \\
+	Materialabhängigkeit: & $\vec E = \frac{\vec D}{\varepsilon}$ & $\vec B = \mu \vec H$ \\
+	Divergenz & $\mathrm{div}\ \vec D = \rho $ & $\mathrm{div}\ \vec B = 0 $ \\
+	Rotation & $\mathrm{rot}\ \vec E + \frac{\partial \vec B}{\partial t} = 0 $ & $\mathrm{rot}\ \vec H = \vec j + \frac{\partial \vec D}{\partial t}$\\
+\end{tabular}
+\everymath{\textstyle} % Formeln ab hier normal Schreiben
+
+\subsection{Mathe}
+
+\subsubsection{Integralsätze:}
+\boxed{\quad \oiint\limits_{\partial V} \vec D \, \mathrm d\vec a = \iiint\limits_{V} \mathrm{div} \vec D \, \mathrm d^3 r  \qquad \qquad  \oint\limits_{\partial A} \vec H \mathrm d\vec r = \iint\limits_{A} \mathrm{rot} \vec H \mathrm d\vec a \quad }
+	
+\end{document}
